@@ -1,29 +1,113 @@
+@import "./kit/overlays.css";
+@import "./kit/tokens.css";
+
 * { box-sizing: border-box; }
+
 html, body {
   margin: 0;
   min-height: 100%;
-  background: #111;
+  background: #0a0a0a;
   color: #f2f2f2;
   font-family: "IBM Plex Mono", ui-monospace, monospace;
   overflow: hidden;
   cursor: none;
 }
-body { padding: 2rem; }
-.acc { letter-spacing: 0.18em; font-size: 0.72rem; color: #ff4d4d; }
-h1 { font-size: clamp(4rem, 18vw, 9rem); margin: 0; letter-spacing: -0.06em; }
-.lede, #status { color: #9a9a9a; max-width: 28rem; }
-nav { display: flex; gap: 1.2rem; margin: 1.5rem 0; }
+
+body {
+  padding: 2rem 1.4rem 4.5rem;
+  background:
+    radial-gradient(900px 420px at 80% 10%, #3a1010 0%, transparent 55%),
+    repeating-linear-gradient(0deg, #0a0a0a 0 2px, #111 2px 4px);
+}
+
+.scan, .vignette {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+}
+
+.scan {
+  z-index: 2;
+  opacity: 0.22;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 77, 77, 0.08) 0,
+    rgba(255, 77, 77, 0.08) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+.vignette {
+  z-index: 1;
+  background: radial-gradient(90% 80% at 50% 40%, transparent 30%, #000 100%);
+}
+
+.mast {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  box-shadow: 0 0 24px #ff4d4d55;
+}
+
+.acc { letter-spacing: 0.18em; font-size: 0.72rem; color: #ff4d4d; margin: 0 0 8px; }
+
+h1 {
+  font-size: clamp(4rem, 18vw, 9rem);
+  margin: 0;
+  letter-spacing: -0.06em;
+  text-shadow: 0 0 40px #ff4d4d66, 8px 0 0 #3a0000;
+  transform: perspective(600px) rotateX(12deg);
+  transform-origin: left center;
+}
+
+.lede, #status { color: #9a9a9a; max-width: 28rem; position: relative; z-index: 3; }
+
+nav {
+  display: flex;
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+  position: relative;
+  z-index: 3;
+}
+
 nav a { color: #8ab4ff; }
+
 #hunter {
   position: fixed;
-  left: 0; top: 0;
+  left: 0;
+  top: 0;
   pointer-events: none;
   font-size: 42px;
   font-weight: 600;
   color: #ff4d4d;
-  text-shadow: 0 0 18px #ff4d4d88;
+  text-shadow: 0 0 18px #ff4d4d88, 0 12px 24px #000;
   z-index: 9;
   will-change: transform;
+  transform-style: preserve-3d;
 }
-.webring { position: fixed; bottom: 12px; left: 0; right: 0; text-align: center; font-size: 0.75rem; }
+
+.webring {
+  position: fixed;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
 .webring a { color: #666; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  h1 { transform: none; text-shadow: 0 0 18px #ff4d4d44; }
+  .scan { display: none; }
+}

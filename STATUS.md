@@ -1,5 +1,9 @@
 # hunted-404 — STATUS
 
+## 2026-08-14 � premium studio look
+
+Scanlines, 3D hunter yaw, Motion One title, predator logo. Clicks still fail on purpose. Reduced motion disables heavy 3D. Webring: https://fun-toys-alpha.vercel.app
+
 ## 2026-08-13 — live
 
 - Live: https://hunted-404.vercel.app
